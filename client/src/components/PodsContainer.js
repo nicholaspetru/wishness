@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 import NewPodForm from './NewPodForm';
 
@@ -31,18 +33,39 @@ class PodsContainer extends Component {
       console.log(error)
     })
   }
+  
   render() {
       return (
       <div className="pods-container">
         <h1>Pods ...</h1>
-        {this.state.pods.map( pod => {
-          return (
-            <div className="single-pod" key={pod.id}>
-              <h4>{pod.title}</h4>
-              <p>{pod.description}</p>
-            </div>
-          )
-        })}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Participants</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.pods.map( pod => {
+              return (
+                <tr className="single-pod" key={pod.id}>
+                  <td>
+                    <div>{pod.title}</div>
+                  </td>
+                  <td>
+                    <div>{pod.description}</div>
+                  </td>
+                  <td>
+                    <a>
+                      pod.participant.name
+                    </a>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
         <NewPodForm onNewPod={this.addNewPod} />
       </div>
     )

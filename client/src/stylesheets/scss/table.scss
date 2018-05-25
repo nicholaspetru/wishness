@@ -1,0 +1,23 @@
+table {
+  border: 1px solid #2d2d2d;
+  border-radius: 2%;
+  border-collapse: collapse;
+  margin: 10px auto;
+  max-width: 900px;
+  width: 100%;
+  thead tr {
+    background: #c4c4c4;
+  }
+  tr {
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #2d2d2d;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      &:not(:last-of-type) {
+        border-right: 1px solid #2d2d2d;
+      }
+    }
+  }
+}
