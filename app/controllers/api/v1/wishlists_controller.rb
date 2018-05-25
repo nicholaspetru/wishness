@@ -19,7 +19,7 @@ module Api::V1
       @wishlist = Wishlist.new(wishlist_params)
 
       if @wishlist.save
-        render json: @wishlist, status: :created, location: @wishlist
+        render json: @wishlist, status: :created
       else
         render json: @wishlist.errors, status: :unprocessable_entity
       end

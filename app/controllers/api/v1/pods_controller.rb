@@ -19,7 +19,7 @@ module Api::V1
       @pod = Pod.new(pod_params)
 
       if @pod.save
-        render json: @pod, status: :created, location: @pod
+        render json: @pod, status: :created
       else
         render json: @pod.errors, status: :unprocessable_entity
       end

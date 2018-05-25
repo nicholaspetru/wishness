@@ -19,7 +19,7 @@ module Api::V1
       @wish = Wish.new(wish_params)
 
       if @wish.save
-        render json: @wish, status: :created, location: @wish
+        render json: @wish, status: :created
       else
         render json: @wish.errors, status: :unprocessable_entity
       end
