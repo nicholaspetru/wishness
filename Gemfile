@@ -42,6 +42,8 @@ end
 
 gem 'rack-cors', require: 'rack/cors'
 
+gem 'pry'
+
 gem 'sass-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

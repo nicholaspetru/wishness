@@ -10,7 +10,7 @@ class PodsContainer extends Component {
     this.state = {
       pods: []
     }
-    this.addNewPod = this.addNewPod.bind(this)
+    this.addNewPod = this.addNewPod.bind(this);
   }
   componentDidMount() {
     axios.get('http://localhost:3001/api/v1/pods.json')
@@ -23,7 +23,10 @@ class PodsContainer extends Component {
     .catch(error => console.log(error))
   }
   addNewPod(title, description) {
-    axios.post( 'http://localhost:3001/api/v1/pods', { pod: {title: title, description: description} })
+    axios.post(
+      'http://localhost:3001/api/v1/pods',
+      { pod: {title: title, description: description} }
+    )
     .then(response => {
       console.log(response)
       var pods = [ this.state.pods, response.data ]
@@ -33,9 +36,9 @@ class PodsContainer extends Component {
       console.log(error)
     })
   }
-  
+
   render() {
-      return (
+    return (
       <div className="pods-container">
         <h1>Pods ...</h1>
         <table>
@@ -44,6 +47,7 @@ class PodsContainer extends Component {
               <th>Name</th>
               <th>Description</th>
               <th>Participants</th>
+              <th>Settings</th>
             </tr>
           </thead>
           <tbody>
@@ -57,9 +61,10 @@ class PodsContainer extends Component {
                     <div>{pod.description}</div>
                   </td>
                   <td>
-                    <a>
-                      pod.participant.name
-                    </a>
+                    <Link to={"/pods/" + pod.id}>Participants >></Link>
+                  </td>
+                  <td>
+                    <Link to={"/pods/" + pod.id + '/participants'} id={pod.id}>Configure</Link>
                   </td>
                 </tr>
               )

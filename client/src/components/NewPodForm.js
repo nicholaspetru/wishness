@@ -4,8 +4,8 @@ class NewPodForm extends Component {
   constructor(props){
     super(props)
     this.state = {
-      title: "Title...",
-      description: "Description..."
+      title: "",
+      description: ""
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -35,13 +35,13 @@ class NewPodForm extends Component {
           onChange={this.handleInput}
           type="text"
           name="title"
-          placeholder={this.state.title} required />
+          placeholder={this.state.title || 'Title...'} required />
         <input
           value={this.state.description}
           onChange={this.handleInput}
           type="text"
           name="description"
-          placeholder={this.state.description} required />
+          placeholder={this.state.description || 'Description...'} required />
         <button>Add Pod</button>
       </form>
     )
